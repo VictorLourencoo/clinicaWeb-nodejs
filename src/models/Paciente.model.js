@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const bcrypt = require('bcrypt');
 const PacienteSchema = new mongoose.Schema({
   nome: {
     type: String,

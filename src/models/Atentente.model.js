@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const PacienteSchema = new mongoose.Schema({
+const AtententeSchema = new mongoose.Schema({
   nome: {
     type: String,
     required: [true, 'Por favor, informe o nome do Usuario '],
@@ -50,16 +50,16 @@ const PacienteSchema = new mongoose.Schema({
 
   role: {
     type: String,
-    default: 'Paciente',
+    default: 'Atentende',
   },
   criadoEm: {
     type: Date,
     default: Date.now(),
   },
 });
-PacienteSchema.pre('save', async function () {
+AtententeSchema.pre('save', async function () {
   const salt = await bcrypt.genSalt(10);
   this.senha = await bcrypt.hash(this.senha, salt);
 });
 
-module.exports = mongoose.model('Paciente', PacienteSchema);
+module.exports = mongoose.model('Atentente', AtententeSchema);

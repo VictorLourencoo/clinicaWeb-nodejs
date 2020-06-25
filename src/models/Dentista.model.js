@@ -27,25 +27,31 @@ const DentistaSchema = new mongoose.Schema({
     minlength: [3, 'CRO Invalido'],
     maxlength: [5, 'CRO Invalido'],
     match: [/^\d{5}\$/, 'Por favor informe um CRO válido'],
-    telefone: {
-      type: String,
-      required: [
-        true,
-        'Por favor, informe um telefone para eventuais contatos.',
-      ],
-      minlength: [14, 'Por favor, informe um número de telefone válido.'],
-      match: [
-        /^\([1-9]{2}\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$/,
-        'Por favor, informe um nº de telefone válido.',
-      ],
-    },
-    email: {
-      type: String,
-      match: [
-        /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-        'Por favor, informe um e-mail válido!.',
-      ],
-    },
+  },
+
+  Especialidade: {
+    type: String,
+    required: [true, 'Por favor informe a especialidade do dentista'],
+    maxlength: [
+      80,
+      'A especialidade do usuario dentista deve ter no maximo 80 caracteres',
+    ],
+  },
+  telefone: {
+    type: String,
+    required: [true, 'Por favor, informe um telefone para eventuais contatos.'],
+    minlength: [14, 'Por favor, informe um número de telefone válido.'],
+    match: [
+      /^\([1-9]{2}\) (?:[2-8]|9[1-9])[0-9]{3}\-[0-9]{4}$/,
+      'Por favor, informe um nº de telefone válido.',
+    ],
+  },
+  email: {
+    type: String,
+    match: [
+      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
+      'Por favor, informe um e-mail válido!.',
+    ],
   },
 
   senha: {
